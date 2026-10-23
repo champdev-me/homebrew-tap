@@ -12,23 +12,23 @@ class Routengine < Formula
   # One universal macOS build serves both Apple Silicon and Intel.
   on_macos do
     on_arm do
-      url "https://github.com/champdev-me/routengine/releases/download/v1.1.0/routengine-1.1.0-mac.tar.gz"
-      sha256 "5bf3634daeb8417442078b822f207b2f7e328d69dcb6a69cb68591a2b4c7cfb3"
+      url "https://github.com/champdev-me/routengine/releases/download/v1.1.1/routengine-1.1.1-mac.tar.gz"
+      sha256 "d02a05fa16421fa00c0a138c8ab28774dec31d9c781cd813c9d6f5524faa119d"
     end
     on_intel do
-      url "https://github.com/champdev-me/routengine/releases/download/v1.1.0/routengine-1.1.0-mac.tar.gz"
-      sha256 "5bf3634daeb8417442078b822f207b2f7e328d69dcb6a69cb68591a2b4c7cfb3"
+      url "https://github.com/champdev-me/routengine/releases/download/v1.1.1/routengine-1.1.1-mac.tar.gz"
+      sha256 "d02a05fa16421fa00c0a138c8ab28774dec31d9c781cd813c9d6f5524faa119d"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/champdev-me/routengine/releases/download/v1.1.0/routengine-1.1.0-linux-arm64.tar.gz"
-      sha256 "dd7e3a8ea57d417e2656ff890abb0d1831e7521acd77ea44bd19bd373e531cc5"
+      url "https://github.com/champdev-me/routengine/releases/download/v1.1.1/routengine-1.1.1-linux-arm64.tar.gz"
+      sha256 "41505f2c6d1a0beb8d7dbc4d66656108fb130b1d028fb95bdc7b376bedc9d8dd"
     end
     on_intel do
-      url "https://github.com/champdev-me/routengine/releases/download/v1.1.0/routengine-1.1.0-linux-amd64.tar.gz"
-      sha256 "410e544f744454f53ea5a7b58ca34b578050ce5400b1e9624ad6b4c13171bd43"
+      url "https://github.com/champdev-me/routengine/releases/download/v1.1.1/routengine-1.1.1-linux-amd64.tar.gz"
+      sha256 "7f995bb32fc2842d922f015670e2976ffd748b90301586d459b61e6bfa41face"
     end
   end
 
