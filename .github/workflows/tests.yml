@@ -1,0 +1,29 @@
+name: tests
+# Installs the formula (and on macOS the cask) from this tap and runs the test and the audit.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  install:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@main
+      - name: Install the command line from the tap
+        run: |
+          brew tap champdev-me/tap
+          brew install champdev-me/tap/routengine
+          brew test champdev-me/tap/routengine
+          routengine version
+      - name: Audit the formula
+        run: brew audit --strict --online champdev-me/tap/routengine
+      - name: Install the macOS app from the tap
+        if: runner.os == 'macOS'
+        run: |
+          brew install --cask champdev-me/tap/routengine
+          test -d /Applications/RoutEngine.app

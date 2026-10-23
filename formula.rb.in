@@ -1,0 +1,45 @@
+class Routengine < Formula
+  desc "Choose which network adapter each app uses (command line)"
+  homepage "https://routengine.net"
+  license "PolyForm-Noncommercial-1.0.0"
+
+  livecheck do
+    url "https://github.com/champdev-me/routengine/releases/latest"
+    strategy :github_latest
+  end
+
+  # One universal macOS build serves both Apple Silicon and Intel.
+  on_macos do
+    url "https://github.com/champdev-me/routengine/releases/download/v@VERSION@/routengine-@VERSION@-mac.tar.gz"
+    sha256 "@SHA_MACOS@"
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/champdev-me/routengine/releases/download/v@VERSION@/routengine-@VERSION@-linux-arm64.tar.gz"
+      sha256 "@SHA_LINUX_ARM64@"
+    end
+    on_intel do
+      url "https://github.com/champdev-me/routengine/releases/download/v@VERSION@/routengine-@VERSION@-linux-amd64.tar.gz"
+      sha256 "@SHA_LINUX_AMD64@"
+    end
+  end
+
+  def install
+    bin.install "routengine"
+  end
+
+  def caveats
+    <<~EOS
+      Routing needs root to create its virtual adapter:
+        sudo #{opt_bin}/routengine run
+      Rules go in config.json (as root on Linux: /etc/routengine; otherwise your config folder).
+      The free edition needs no key. For Pro: routengine machine-code, then routengine license add <key>.
+      Docs: https://github.com/champdev-me/routengine/blob/main/docs/cli.md
+    EOS
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/routengine version")
+  end
+end

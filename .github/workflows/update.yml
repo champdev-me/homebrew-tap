@@ -1,0 +1,34 @@
+name: update
+# Follows the latest RoutEngine release: rewrites the formula and the cask when there is a new version.
+# GitHub pauses scheduled workflows after 60 days without repository activity; a manual run
+# (Actions > update > Run workflow) or any commit starts it again.
+on:
+  schedule:
+    - cron: '23 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write # to start the tests: a push made with the workflow token does not start them
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rewrite the formula and cask from the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scripts/update.sh
+      - name: Commit if it changed, then test it
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- Formula Casks; then echo "no change"; exit 0; fi
+          v=$(sed -n 's#.*/download/v\([0-9.]*\)/routengine-.*#\1#p' Formula/routengine.rb | head -1)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Formula Casks
+          git commit -m "routengine $v"
+          git push
+          gh workflow run tests.yml
