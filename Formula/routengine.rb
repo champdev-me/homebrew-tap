@@ -1,17 +1,24 @@
 class Routengine < Formula
-  desc "Choose which network adapter each app uses (command line)"
+  desc "Choose which network adapter each app uses (command-line version)"
   homepage "https://routengine.net"
   license "PolyForm-Noncommercial-1.0.0"
 
   livecheck do
-    url "https://github.com/champdev-me/routengine/releases/latest"
+    url :stable
     strategy :github_latest
   end
 
   # One universal macOS build serves both Apple Silicon and Intel.
+  # One universal macOS build serves both Apple Silicon and Intel.
   on_macos do
-    url "https://github.com/champdev-me/routengine/releases/download/v1.1.0/routengine-1.1.0-mac.tar.gz"
-    sha256 "5bf3634daeb8417442078b822f207b2f7e328d69dcb6a69cb68591a2b4c7cfb3"
+    on_arm do
+      url "https://github.com/champdev-me/routengine/releases/download/v1.1.0/routengine-1.1.0-mac.tar.gz"
+      sha256 "5bf3634daeb8417442078b822f207b2f7e328d69dcb6a69cb68591a2b4c7cfb3"
+    end
+    on_intel do
+      url "https://github.com/champdev-me/routengine/releases/download/v1.1.0/routengine-1.1.0-mac.tar.gz"
+      sha256 "5bf3634daeb8417442078b822f207b2f7e328d69dcb6a69cb68591a2b4c7cfb3"
+    end
   end
 
   on_linux do
