@@ -2,13 +2,13 @@ cask "routengine" do
   version "1.1.1"
   sha256 "28c4a10089a81aeb6383b1912ff26e58a5e7caa5d50de03790352f5e580ee1c8"
 
-  url "https://github.com/champdev-me/routengine/releases/download/v#{version}/RoutEngine-#{version}.dmg"
+  url "https://routengine.net/download/RoutEngine-#{version}.dmg"
   name "RoutEngine"
   desc "Choose which network adapter each app uses"
   homepage "https://routengine.net"
 
   livecheck do
-    url :url
+    url "https://github.com/champdev-me/routengine/releases/latest"
     strategy :github_latest
   end
 

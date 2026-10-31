@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 # Rewrites Formula/routengine.rb and Casks/routengine.rb from the latest RoutEngine release (version and the
-# SHA-256 of each file, taken from the GitHub release assets). Leaves both alone if an asset is missing.
+# SHA-256 of each file, taken from the GitHub release assets, and the app's from routengine.net). Leaves both alone if a file is missing.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 rel=$(gh api repos/champdev-me/routengine/releases/latest)
 tag=$(jq -r .tag_name <<<"$rel"); v=${tag#v}
 sha() { jq -r --arg n "$1" '.assets[] | select(.name == $n) | .digest | sub("sha256:"; "")' <<<"$rel"; }
-m=$(sha "routengine-$v-mac.tar.gz"); x=$(sha "routengine-$v-linux-amd64.tar.gz"); a=$(sha "routengine-$v-linux-arm64.tar.gz"); d=$(sha "RoutEngine-$v.dmg")
+m=$(sha "routengine-$v-mac.tar.gz"); x=$(sha "routengine-$v-linux-amd64.tar.gz"); a=$(sha "routengine-$v-linux-arm64.tar.gz")
+# The macOS app is not on GitHub: it is downloaded from routengine.net, which publishes each file's SHA-256 next to it.
+d=$(curl -fsS "https://routengine.net/download/RoutEngine-$v.dmg.sha256" | awk '{print $1}' || true)
 for s in "$m" "$x" "$a" "$d"; do
     [ -n "$s" ] || { echo "release $tag has no complete set of files yet; leaving the formula and cask alone"; exit 0; }
 done

@@ -9,6 +9,6 @@ brew install --cask champdev-me/tap/routengine    # the macOS app (window and me
 
 The command-line program needs root to create its virtual adapter: `sudo routengine run`. The app asks for your password once per launch. The app is not notarized by Apple, so the cask clears the download quarantine flag after installing it.
 
-Both follow the latest [release](https://github.com/champdev-me/routengine/releases/latest) by themselves: the `update` workflow checks every three hours.
+Both follow the latest [release](https://github.com/champdev-me/routengine/releases/latest) by themselves: the `update` workflow checks every three hours. The command line comes from GitHub; the app is downloaded from routengine.net, where the window apps are published.
 
 Docs: https://github.com/champdev-me/routengine
