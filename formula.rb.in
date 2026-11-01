@@ -9,7 +9,6 @@ class Routengine < Formula
   end
 
   # One universal macOS build serves both Apple Silicon and Intel.
-  # One universal macOS build serves both Apple Silicon and Intel.
   on_macos do
     on_arm do
       url "https://github.com/champdev-me/routengine/releases/download/v@VERSION@/routengine-@VERSION@-mac.tar.gz"
@@ -41,7 +40,7 @@ class Routengine < Formula
       Routing needs root to create its virtual adapter:
         sudo #{opt_bin}/routengine run
       Rules go in config.json (as root on Linux: /etc/routengine; otherwise your config folder).
-      The free edition needs no key. For Pro: routengine machine-code, then routengine license add <key>.
+      Free for any use, work included, on any number of apps. No key needed.
       Docs: https://github.com/champdev-me/routengine/blob/main/docs/cli.md
     EOS
   end
