@@ -1,6 +1,6 @@
 cask "routengine" do
-  version "1.1.1"
-  sha256 "28c4a10089a81aeb6383b1912ff26e58a5e7caa5d50de03790352f5e580ee1c8"
+  version "1.2.1"
+  sha256 "6091d8a7b4da56e222e5d21d8762c471691f3ba03e3dac0f594be322a412944b"
 
   url "https://routengine.net/download/RoutEngine-#{version}.dmg"
   name "RoutEngine"

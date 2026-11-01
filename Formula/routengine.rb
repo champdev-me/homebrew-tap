@@ -9,26 +9,25 @@ class Routengine < Formula
   end
 
   # One universal macOS build serves both Apple Silicon and Intel.
-  # One universal macOS build serves both Apple Silicon and Intel.
   on_macos do
     on_arm do
-      url "https://github.com/champdev-me/routengine/releases/download/v1.1.1/routengine-1.1.1-mac.tar.gz"
-      sha256 "d02a05fa16421fa00c0a138c8ab28774dec31d9c781cd813c9d6f5524faa119d"
+      url "https://github.com/champdev-me/routengine/releases/download/v1.2.1/routengine-1.2.1-mac.tar.gz"
+      sha256 "13d0f2468f3f7876b4a86bb90a9efa3f10b33a84d5147ab25b87083c26f73a8d"
     end
     on_intel do
-      url "https://github.com/champdev-me/routengine/releases/download/v1.1.1/routengine-1.1.1-mac.tar.gz"
-      sha256 "d02a05fa16421fa00c0a138c8ab28774dec31d9c781cd813c9d6f5524faa119d"
+      url "https://github.com/champdev-me/routengine/releases/download/v1.2.1/routengine-1.2.1-mac.tar.gz"
+      sha256 "13d0f2468f3f7876b4a86bb90a9efa3f10b33a84d5147ab25b87083c26f73a8d"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/champdev-me/routengine/releases/download/v1.1.1/routengine-1.1.1-linux-arm64.tar.gz"
-      sha256 "41505f2c6d1a0beb8d7dbc4d66656108fb130b1d028fb95bdc7b376bedc9d8dd"
+      url "https://github.com/champdev-me/routengine/releases/download/v1.2.1/routengine-1.2.1-linux-arm64.tar.gz"
+      sha256 "3694644b670971be0b23aff6d56c1c4d54c625fd6b23a1528ebfbca0646610cf"
     end
     on_intel do
-      url "https://github.com/champdev-me/routengine/releases/download/v1.1.1/routengine-1.1.1-linux-amd64.tar.gz"
-      sha256 "7f995bb32fc2842d922f015670e2976ffd748b90301586d459b61e6bfa41face"
+      url "https://github.com/champdev-me/routengine/releases/download/v1.2.1/routengine-1.2.1-linux-amd64.tar.gz"
+      sha256 "1749e59e6eb5631423d987668c8064a54db272fdaea6344701e8245203296e60"
     end
   end
 
@@ -41,7 +40,7 @@ class Routengine < Formula
       Routing needs root to create its virtual adapter:
         sudo #{opt_bin}/routengine run
       Rules go in config.json (as root on Linux: /etc/routengine; otherwise your config folder).
-      The free edition needs no key. For Pro: routengine machine-code, then routengine license add <key>.
+      Free for any use, work included, on any number of apps. No key needed.
       Docs: https://github.com/champdev-me/routengine/blob/main/docs/cli.md
     EOS
   end
