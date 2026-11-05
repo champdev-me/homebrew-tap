@@ -1,6 +1,6 @@
 cask "routengine" do
-  version "1.2.1"
-  sha256 "6091d8a7b4da56e222e5d21d8762c471691f3ba03e3dac0f594be322a412944b"
+  version "1.2.2"
+  sha256 "98b048268f1bb79f1b4284d5a468c46a1219253526e8f2422f7625cbb635f1b4"
 
   url "https://routengine.net/download/RoutEngine-#{version}.dmg"
   name "RoutEngine"
@@ -12,7 +12,7 @@ cask "routengine" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :monterey"
+  depends_on macos: :ventura
 
   app "RoutEngine.app"
 
