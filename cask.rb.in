@@ -23,12 +23,20 @@ cask "routengine" do
                    must_succeed: false
   end
 
+  # Start at sign-in (Settings) adds a login item, a root-owned copy of the app and a sudoers rule for that copy.
+  uninstall launchctl: "net.routengine.app",
+            delete:    [
+              "/etc/sudoers.d/routengine-app",
+              "/Library/RoutEngine",
+            ]
+
   zap trash: [
     "~/Library/Application Support/routengine",
     "~/Library/Caches/routengine",
   ]
 
   caveats <<~EOS
-    RoutEngine asks for your password once per launch, to create its virtual network adapter.
+    RoutEngine asks for your password once per launch, to create its virtual network adapter,
+    unless Start at sign-in is ticked in its Settings.
   EOS
 end

@@ -1,6 +1,6 @@
 cask "routengine" do
-  version "1.2.2"
-  sha256 "98b048268f1bb79f1b4284d5a468c46a1219253526e8f2422f7625cbb635f1b4"
+  version "1.2.3"
+  sha256 "46b81fd0222189bd3110e5228656c311bbdd07e3f40ee3ae346929852e9eb941"
 
   url "https://routengine.net/download/RoutEngine-#{version}.dmg"
   name "RoutEngine"
@@ -23,12 +23,20 @@ cask "routengine" do
                    must_succeed: false
   end
 
+  # Start at sign-in (Settings) adds a login item, a root-owned copy of the app and a sudoers rule for that copy.
+  uninstall launchctl: "net.routengine.app",
+            delete:    [
+              "/etc/sudoers.d/routengine-app",
+              "/Library/RoutEngine",
+            ]
+
   zap trash: [
     "~/Library/Application Support/routengine",
     "~/Library/Caches/routengine",
   ]
 
   caveats <<~EOS
-    RoutEngine asks for your password once per launch, to create its virtual network adapter.
+    RoutEngine asks for your password once per launch, to create its virtual network adapter,
+    unless Start at sign-in is ticked in its Settings.
   EOS
 end
